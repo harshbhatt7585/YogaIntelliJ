@@ -1,0 +1,68 @@
+.yoga-container {
+    background: linear-gradient(100deg, #FF8C00, #FFA500);
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.secondary-btn {
+    position: relative;
+    left: 45%;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    border-color: rgba(125, 125, 125, 0.1);
+    border-width: 5px;
+    background-color: rgba(0, 0, 0,0.2);
+    box-shadow: 0px 0px 0px 0px;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background-color: rgba(0, 0, 0,0.4);
+}
+
+.starting-contdown {
+    margin: auto;
+    border: 10px solid rgba(125, 125, 125, 0.5);
+    width: max-content;
+    padding: 10px 30px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0);
+    position: relative;
+    top: 45%;
+}
+.starting-contdown h1 {
+    color: white;
+}
+.pose-img {
+    position: absolute;
+    right: 120px;
+    top: 80px;
+    width: 500px;
+    aspect-ratio: 1;
+}
+
+.performance-container {
+    display: flex;
+    padding: 20px;
+    position: absolute;
+    left: 150px;
+}
+
+
+.pose-performance {
+    margin: 10px 10px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+}
+.pose-performance h4 {
+    color: rgba(0,0,0,0.7);
+}
+
+#webcam {
+    transform: rotateY(180deg);
+}
+
+#my-canvas {
+    transform: rotateY(180deg);
+}
