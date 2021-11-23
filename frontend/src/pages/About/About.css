@@ -24,3 +24,7 @@
     margin-top: 20px;
     text-decoration: underline;
 }
+.about-content a,
+.developer-info a {
+ color: white;  
+}

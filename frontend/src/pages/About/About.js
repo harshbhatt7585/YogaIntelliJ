@@ -12,7 +12,7 @@ export default function About() {
                     I created this as a personal project, and I have also deployed this project
                     so people can use it and mainly the developers can who are learning AI can learn 
                     from this project and make their own AI or they can also improve in this project.
-                    This is an open source project, The code is available on the GitHub - ........................
+                    This is an open source project, The code is available on the GitHub - <a href="https://github.com/harshbhatt7585/YogaIntelliJ">https://github.com/harshbhatt7585/YogaIntelliJ</a>
                     
                     This AI first predicts keypoints or coordinates of different parts of the body(basically where
                     they are present in an image) and then it use another classification model to classify the poses if 
@@ -30,10 +30,9 @@ export default function About() {
                         I hope this project will help you. 
                     </p>
                     <h4>Contact</h4>
-                    <p>Instagram: <a></a></p>
-                    <p>Youtube: <a></a></p>
-                    <p>Email: <a></a></p>
-                    <p>GitHub: <a></a></p> 
+                    <a href="https://www.instagram.com/codedharsh75/"><p className="about-content">Instagram</p></a>
+                    <a href="https://www.youtube.com/channel/UCiD7kslR7lKSaPGSQ-heOWg"><p  className="about-content">Youtube</p></a>
+                    <a href="https://github.com/harshbhatt7585"><p  className="about-content">GitHub</p></a>
                 </div>
             </div>
         </div>
