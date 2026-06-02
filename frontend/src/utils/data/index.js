@@ -99,3 +99,20 @@ export const keypointConnections = {
     left_knee: ['left_ankle'],
     right_knee: ['right_ankle']
 }
+
+// Major joint combinations for calculating angles between them
+// Each triplet represents [Point A, Vertex B (angle measured here), Point C]
+export const jointAngles = [
+    // Elbow angles
+    ['left_shoulder', 'left_elbow', 'left_wrist'],
+    ['right_shoulder', 'right_elbow', 'right_wrist'],
+    // Shoulder angles
+    ['left_elbow', 'left_shoulder', 'left_hip'],
+    ['right_elbow', 'right_shoulder', 'right_hip'],
+    // Hip angles
+    ['left_shoulder', 'left_hip', 'left_knee'],
+    ['right_shoulder', 'right_hip', 'right_knee'],
+    // Knee angles
+    ['left_hip', 'left_knee', 'left_ankle'],
+    ['right_hip', 'right_knee', 'right_ankle']
+]

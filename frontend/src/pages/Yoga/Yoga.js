@@ -11,8 +11,8 @@ import './Yoga.css'
  
 import DropDown from '../../components/DropDown/DropDown';
 import { poseImages } from '../../utils/pose_images';
-import { POINTS, keypointConnections } from '../../utils/data';
-import { drawPoint, drawSegment } from '../../utils/helper'
+import { POINTS, keypointConnections, jointAngles } from '../../utils/data';
+import { drawPoint, drawSegment, calculateAngle } from '../../utils/helper'
 
 
 
@@ -120,7 +120,7 @@ function Yoga() {
   const runMovenet = async () => {
     const detectorConfig = {modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER};
     const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
-    const poseClassifier = await tf.loadLayersModel('https://models.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
+    const poseClassifier = await tf.loadLayersModel('/model/model.json')
     const countAudio = new Audio(count)
     countAudio.loop = true
     interval = setInterval(() => { 
@@ -164,6 +164,31 @@ function Yoga() {
           } 
           return [keypoint.x, keypoint.y]
         }) 
+
+        // Calculate and render joint angles
+        jointAngles.forEach((angleJoints) => {
+          let pointAIndex = POINTS[angleJoints[0].toUpperCase()]
+          let pointBIndex = POINTS[angleJoints[1].toUpperCase()]
+          let pointCIndex = POINTS[angleJoints[2].toUpperCase()]
+
+          let pointA = keypoints[pointAIndex]
+          let pointB = keypoints[pointBIndex]
+          let pointC = keypoints[pointCIndex]
+
+          // Only calculate and render if all three keypoints are detected with enough confidence
+          if (pointA && pointB && pointC &&
+              pointA.score > 0.4 && pointB.score > 0.4 && pointC.score > 0.4) {
+
+            let angle = calculateAngle(pointA, pointB, pointC)
+
+            // Render the calculated angle visually on the canvas near the vertex coordinate
+            // Performance: FillText is a fast operation and doesn't cause noticeable frame drops
+            ctx.font = "16px Arial"
+            ctx.fillStyle = "rgb(0, 255, 255)" // Cyan color for distinct angle visualization
+            ctx.fillText(Math.round(angle) + "°", pointB.x + 10, pointB.y + 10)
+          }
+        })
+
         if(notDetected > 4) {
           skeletonColor = 'rgb(255,255,255)'
           return

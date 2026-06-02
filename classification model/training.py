@@ -118,12 +118,22 @@ processed_X_train = preprocess_data(X_train)
 processed_X_val =  preprocess_data(X_val)
 processed_X_test = preprocess_data(X_test)
 
-inputs = tf.keras.Input(shape=(34))
-layer = keras.layers.Dense(128, activation=tf.nn.relu6)(inputs)
-layer = keras.layers.Dropout(0.5)(layer)
-layer = keras.layers.Dense(64, activation=tf.nn.relu6)(layer)
-layer = keras.layers.Dropout(0.5)(layer)
-outputs = keras.layers.Dense(len(class_names), activation="softmax")(layer)
+inputs = tf.keras.Input(shape=(34,))
+
+# Advanced modern dense architecture using TFJS compatible layers
+x = keras.layers.Dense(256, activation='relu')(inputs)
+x = keras.layers.BatchNormalization()(x)
+x = keras.layers.Dropout(0.4)(x)
+
+x = keras.layers.Dense(128, activation='relu')(x)
+x = keras.layers.BatchNormalization()(x)
+x = keras.layers.Dropout(0.4)(x)
+
+x = keras.layers.Dense(64, activation='relu')(x)
+x = keras.layers.BatchNormalization()(x)
+x = keras.layers.Dropout(0.4)(x)
+
+outputs = keras.layers.Dense(len(class_names), activation="softmax")(x)
 
 model = keras.Model(inputs, outputs)
 
@@ -136,7 +146,7 @@ model.compile(
 
 # Add a checkpoint callback to store the checkpoint that has the highest
 # validation accuracy.
-checkpoint_path = "weights.best.hdf5"
+checkpoint_path = "weights.best.keras"
 checkpoint = keras.callbacks.ModelCheckpoint(checkpoint_path,
                              monitor='val_accuracy',
                              verbose=1,

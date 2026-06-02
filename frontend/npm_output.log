@@ -1,0 +1,29 @@
+
+> yogaIntelliJ@0.1.0 start
+> react-scripts start
+
+[34mℹ[39m [90m｢wds｣[39m: Project is running at http://192.168.0.2/
+[34mℹ[39m [90m｢wds｣[39m: webpack output is served from
+[34mℹ[39m [90m｢wds｣[39m: Content not from webpack is served from /app/frontend/public
+[34mℹ[39m [90m｢wds｣[39m: 404s will fallback to /
+Starting the development server...
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+Compiled with warnings.
+
+src/components/DropDown/DropDown.js
+  Line 26:25:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+src/components/Instrctions/Instructions.js
+  Line 11:26:  'setInsntructions' is assigned a value but never used                                                      no-unused-vars
+  Line 23:13:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+src/pages/Yoga/Yoga.js
+  Line 4:8:     'backend' is defined but never used                                                                                                  no-unused-vars
+  Line 53:6:    React Hook useEffect has missing dependencies: 'bestPerform' and 'startingTime'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  Line 277:13:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images                            jsx-a11y/alt-text
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
